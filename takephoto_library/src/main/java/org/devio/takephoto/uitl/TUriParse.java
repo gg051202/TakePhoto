@@ -54,13 +54,19 @@ public class TUriParse {
      * @return
      */
     public static Uri getTempUri(Context context) {
+
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
         File file = new File(Environment.getExternalStorageDirectory(), "/images/" + timeStamp + ".jpg");
+        if (file.getParent() == null) {
+            file = new File(context.getCacheDir(), System.currentTimeMillis() + ".jpg");
+        }
         if (!file.getParentFile().exists()) {
             file.getParentFile().mkdirs();
         }
+
         return getUriForFile(context, file);
     }
+
 
     /**
      * 获取一个临时的Uri, 通过传入字符串路径

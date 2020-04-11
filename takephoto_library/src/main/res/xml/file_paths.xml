@@ -4,5 +4,11 @@
         <root-path
             path=""
             name="camera_photos" />
+        <external-path
+            name="takephoto_external"
+            path="." />
+        <cache-path
+            name="takephoto_cache"
+            path="." />
     </paths>
 </resources>
